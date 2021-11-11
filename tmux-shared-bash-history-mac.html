@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      This is how you share the bash history across mac tmux sessions with fzf.
+    </h2>
+    <p>
+      First, add <a href="/bash-profile-shared-history.txt">this stuff</a> to
+      your ~/.bash_profile.
+    </p>
+
+    <p>
+      Then, make mac use ~/.bash_history instead of ~/.bash_sessions. Do this by
+      deleting ~/.bash_sessions (save old sessions to another folder just in
+      case) and add the file ~/.bash_sessions_disable.
+    </p>
+
+    <p>
+      Finally, modify fzf at the file:
+      /usr/local/Cellar/fzf/0.22.0/shell/key-bindings.bash. There is a function
+      called: __fzf_history__. Change the line <br />
+      output=$( <br />to <br />output=$( builtin history -r;
+    </p>
+  </body>
+</html>
