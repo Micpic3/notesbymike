@@ -1,0 +1,17 @@
+# History controls
+export HISTCONTROL=ignoredups:erasedups
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+shopt -s histappend   
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+export PROMPT_COMMAND="update_terminal_cwd; history -a"
+if ! command -v update_terminal_cwd &> /dev/null
+then
+  export PROMPT_COMMAND="history -a"
+fi
